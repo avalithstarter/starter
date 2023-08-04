@@ -1,15 +1,21 @@
-# Basejump SaaS starter for Supabase
+# YourBrand - Dashboard template for E-commerce
 
-Basejump is an open source starter for Supabase. It provides personal accounts, shared team accounts, billing
-subscriptions with Stripe and a dashboard template.
+This is a Nextjs/Supabase template for future projects. It was made from the [usebasejump.com](https://usebasejump.com) repository. 
 
-[Learn more at usebasejump.com](https://usebasejump.com).
+## Installation and usage
 
-## Installation
+Make sure to make the `.env` file with this variables
 
 ```bash
-yarn
-yarn dev
+URL="http://localhost:3000"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="supabase-key"
+NEXT_PUBLIC_SUPABASE_URL="supabase-url"
+```
+and then run
+
+```bash
+npm i
+npm run dev
 ```
 
 ## Typescript and generated types
@@ -40,19 +46,12 @@ The project is configured to use ESLint and Prettier. Prettier is run through ES
 
 ## Internationalizatoin and translations
 
-Basejump uses NextJS built in internationalization, and adds `next-translate` for translation support.
+The project uses NextJS built in internationalization, and adds `next-translate` for translation support.
 
 * [NextJS Internationalization](https://nextjs.org/docs/basic-features/i18n)
 * [next-translate](https://github.com/aralroca/next-translate)
 
-## Thanks & Credits
+## Notes
 
-<p>Hosting has generously been provided by Vercel</p>
-<a
-href="https://vercel.com?utm_source=basejump&utm_campaign=oss"
-target="_blank"
-rel="noopener noreferrer"
->
-    <img src="public/images/vercel-logo.svg" alt="Powered by Vercel" />
-</a>
+- If there's an issue related with `window` in the build or development, just make sure to add a validation so there's no reference error. 
 
