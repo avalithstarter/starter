@@ -20,18 +20,10 @@ const DashboardIndex = () => {
   return (
     <>
       <DashboardMeta title={t("dashboardMeta.dashboard")} />
-      {isLoading ? (
-        <Loader className="h-8 mx-auto pt-10" />
-      ) : !personalAccount ? (
-        // Personal accounts are deactivated, so we
-        // prompt the user to jump to a team dashboard
+        {/* This is where we add the content for the dashboard */}
         <div className="max-w-md mx-auto pt-10">
-          <PersonalAccountDeactivated />
+          <h1>Hola hola</h1>
         </div>
-      ) : (
-        //  Replace me with your content!
-        <FutureContentPlaceholder filePath="/src/pages/dashboard/index.mdx" />
-      )}
     </>
   );
 };
