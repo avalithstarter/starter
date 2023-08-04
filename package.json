@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "yarn sync-stripe && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc",
