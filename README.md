@@ -1,4 +1,6 @@
-# Basejump SaaS starter for Supabase
+# This is the legacy branch
+
+# Basejump SaaS starter for Supabase 
 
 Basejump is an open source starter for Supabase. It provides personal accounts, shared team accounts, billing
 subscriptions with Stripe and a dashboard template.
