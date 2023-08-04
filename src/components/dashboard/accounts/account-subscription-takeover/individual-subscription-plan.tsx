@@ -37,8 +37,10 @@ const IndividualSubscriptionPlan = ({ plan, currentAccount }: Props) => {
     {
       onSuccess(url) {
         console.log("whoooop", url);
-        if (!url) return;
-        window.location.href = url;
+        if (typeof window === "object") {
+          if (!url) return;
+          window.location.href = url;
+        }
       },
       onError(error: any) {
         toast.error(error.message);

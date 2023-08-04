@@ -27,7 +27,9 @@ const AccountSubscription = ({ accountId }: Props) => {
     },
     {
       onSuccess(url) {
-        window.location.href = url;
+        if (typeof window === "object") {
+          window.location.href = url;
+        }
       },
     }
   );
