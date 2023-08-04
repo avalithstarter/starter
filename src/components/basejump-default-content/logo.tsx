@@ -40,7 +40,7 @@ const Logo = ({ size = "lg", className }: Props) => {
           "text-2xl": size === "sm",
         })}
       >
-        Basejump
+        YourBrand
       </h1>
     </div>
   );
