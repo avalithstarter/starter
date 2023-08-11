@@ -20,7 +20,7 @@ const ContentLayout = ({ children }) => {
       onClickOverlay={toggleSidebar}
     >
       <ContentHeader toggleSidebar={toggleSidebar} />
-      <div className="min-h-screen px-4 lg:px-0">{children}</div>
+      <div className="min-h-screen px-4 lg:px-0" style={{width:'100%'}}>{children}</div>
       <ContentFooter />
     </Drawer>
   );
