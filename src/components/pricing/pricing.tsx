@@ -36,12 +36,16 @@ const PricingSection = () => {
 
   useAuthCheck(redirectedFrom as string);
 
+  const handlePayment = (data) =>{
+    console.log('plan', data)
+  }
+
   return (
     <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem'}}>
       <section className="bg-base-100" style={{height:'auto', minHeight:'75vh'}}>
           <div className="max-w-6xl py-8" style={{height:'100%'}}>
             <div className="sm:flex sm:flex-col flex-col sm:align-center flex justify-center" style={{gap:'3rem'}}>
-              <h1 className="text-4xl font-extrabold text-info sm:text-center sm:text-6xl">
+              <h1 className="text-4xl font-extrabold text-primary sm:text-center sm:text-6xl">
                 Pricing Plans
               </h1>
               <p className="max-w-2xl mx-auto my-0 mt-5 text-xl text-grey-200 sm:text-center sm:text-2xl">
@@ -65,20 +69,20 @@ const PricingSection = () => {
                                   key={price.interval}
                                   className="divide-y rounded-lg shadow-sm divide-zinc-600"
                               >
-                                  <div className="p-6 py-2 m-1 text-2xl font-medium text-black rounded-md shadow-sm border-zinc-800 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8">
+                                  <div className="p-6 py-2 m-1 text-2xl font-medium text-grey-300 rounded-md shadow-sm border-zinc-800 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8">
                                       {price.name}
                                   </div>
                                   <div className="p-6">
                                       <p>
-                                          <span className="text-5xl font-extrabold text-info">
+                                          <span className="text-5xl font-extrabold text-primary">
                                               {priceString}
                                           </span>
-                                          <span className="text-base font-medium text-info">
+                                          <span className="text-base font-medium text-primary">
                                               /{price.interval}
                                           </span>
                                       </p>
                                       <p className="mt-4 mb-5 text-grey-300">{price.description}</p>
-                                      <button className="btn btn-outline btn-info btn-wide">Subscribe</button>
+                                      <button className="btn btn-outline btn-primary btn-wide" onClick={()=>{handlePayment(price)}}>Subscribe</button>
                                   </div>
                               </div>
                           </div>
