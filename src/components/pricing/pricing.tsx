@@ -59,7 +59,7 @@ const PricingSection = () => {
                     }).format(price.unit_amount);
 
                   return (
-                      <div className="relative flex self-center mt-12 border rounded-lg border-zinc-800">
+                      <div key={price.id} className="relative flex self-center mt-12 border rounded-lg border-zinc-800">
                           <div style={{width: '100%'}} className="border border-opacity-50 divide-y rounded-lg shadow-sm divide-zinc-600">
                               <div
                                   key={price.interval}
