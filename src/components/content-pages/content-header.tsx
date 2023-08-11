@@ -27,18 +27,7 @@ const ContentHeader = ({ toggleSidebar }: Props) => {
             <Logo size="sm" />
           </Link>
         )}
-        <div className="hidden lg:flex gap-4">
-          {navigation.map((nav) => (
-            <Link
-              key={nav.href}
-              href={nav.href}
-              passHref
-              className="btn btn-ghost"
-            >
-              {nav.title}
-            </Link>
-          ))}
-        </div>
+        
       </div>
       <div className="hidden lg:flex">
         {!!user ? (
