@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   }, [router.asPath]);
   
   return (
-    <Theme dataTheme={theme}>
+    <Theme dataTheme={'winter'}>
       <SessionContextProvider
         supabaseClient={supabaseClient}
         initialSession={pageProps.initialSession}

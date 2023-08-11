@@ -16,7 +16,7 @@ const BasejumpHomepage = () => (
         <Logo size="lg" className="mx-auto" />
         <h2 className="h2 text-center my-2">
           Dashboard template for future {' '}
-          <span className="text-info">E-commerce</span>
+          <span className="text-primary">E-commerce</span>
         </h2>
       </div>
       

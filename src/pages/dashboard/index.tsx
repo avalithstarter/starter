@@ -22,7 +22,7 @@ const DashboardIndex = () => {
       <DashboardMeta title={t("dashboardMeta.dashboard")} />
         {/* This is where we add the content for the dashboard */}
         <div className="max-w-md mx-auto pt-10">
-          <h1>Hola hola</h1>
+          <h1>Dashboard</h1>
         </div>
     </>
   );

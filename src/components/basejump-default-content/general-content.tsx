@@ -16,7 +16,7 @@ const GeneralContent = () => {
   return (
     <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem'}}>
         <section className="flex flex-col justify-center" style={{height:'auto', width:'auto', gap:'4rem', minHeight:'95vh'}}>
-            <h1 className="text-4xl font-extrabold text-info sm:text-center sm:text-6xl">
+            <h1 className="text-4xl font-extrabold text-primary sm:text-center sm:text-6xl">
                 What can we do for you?
             </h1>
             <p className="max-w-2xl mx-auto my-0 mt-5 text-xl text-grey-200 sm:text-center sm:text-2xl">
@@ -31,7 +31,7 @@ const GeneralContent = () => {
                         <h2 className="card-title">Web Development</h2>
                         <p>Building tailored web solutions</p>
                         <div className="card-actions">
-                            <button className="btn btn-info btn-wide">Learn more</button>
+                            <button className="btn btn-primary btn-wide">Learn more</button>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ const GeneralContent = () => {
                         <h2 className="card-title">Mobile Development</h2>
                         <p>Feature-rich mobile applications</p>
                         <div className="card-actions">
-                            <button className="btn btn-info btn-wide">Learn more</button>
+                            <button className="btn btn-primary btn-wide">Learn more</button>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@ const GeneralContent = () => {
                         <h2 className="card-title">Cloud Migration</h2>
                         <p>Businesses to the cloud</p>
                         <div className="card-actions">
-                            <button className="btn btn-info btn-wide">Learn more</button>
+                            <button className="btn btn-primary btn-wide">Learn more</button>
                         </div>
                     </div>
                 </div>
