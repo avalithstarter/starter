@@ -12,7 +12,7 @@ const PricingSection = () => {
         unit_amount: 12,
         interval: 'month',
         currency: 'USD',
-        id:'asdfasdfa',
+        id:'asdfas1231',
         description:'All the basics for starting a new business!',
         name: 'Hobby'
     },
@@ -20,7 +20,7 @@ const PricingSection = () => {
         unit_amount: 24,
         interval: 'month',
         currency: 'USD',
-        id:'asdfasdfa',
+        id:'asd1312fasdfa',
         description:'All the basics for starting a new business!',
         name: 'Freelancer'
     },
@@ -28,7 +28,7 @@ const PricingSection = () => {
         unit_amount: 32,
         interval: 'month',
         currency: 'USD',
-        id:'asdfasdfa',
+        id:'asdf132123asdfa',
         description:'All the basics for starting a new business!',
         name: 'Startup'
     }
@@ -38,13 +38,13 @@ const PricingSection = () => {
 
   return (
     <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem'}}>
-      <section className="bg-base-100">
-          <div className="max-w-6xl px-4 py-8 mx-auto sm:py-24 sm:px-6 lg:px-8">
-            <div className="sm:flex sm:flex-col sm:align-center" style={{gap:'3rem'}}>
-              <h1 className="text-4xl font-extrabold text-grey sm:text-center sm:text-6xl">
+      <section className="bg-base-100" style={{height:'75vh'}}>
+          <div className="max-w-6xl py-8" style={{height:'100%'}}>
+            <div className="sm:flex sm:flex-col sm:align-center flex justify-center" style={{gap:'3rem'}}>
+              <h1 className="text-4xl font-extrabold text-info sm:text-center sm:text-6xl">
                 Pricing Plans
               </h1>
-              <p className="max-w-2xl m-auto mt-5 text-xl text-grey-200 sm:text-center sm:text-2xl">
+              <p className="max-w-2xl mx-auto my-0 mt-5 text-xl text-grey-200 sm:text-center sm:text-2xl">
                 Start building for free, then add a site plan to go live. Account
                 plans unlock additional features.
               </p>
@@ -70,21 +70,15 @@ const PricingSection = () => {
                                   </div>
                                   <div className="p-6">
                                       <p>
-                                          <span className="text-5xl font-extrabold text-black">
+                                          <span className="text-5xl font-extrabold text-info">
                                               {priceString}
                                           </span>
-                                          <span className="text-base font-medium text-grey-100">
+                                          <span className="text-base font-medium text-info">
                                               /{price.interval}
                                           </span>
                                       </p>
-                                      <p className="mt-4 text-grey-300">{price.description}</p>
-                                      <button
-                                          type="button"
-                                          disabled={false}
-                                          className="block w-full py-2 mt-12 text-sm font-semibold text-center text-black rounded-md hover:text-white hover:bg-zinc-900 "
-                                      >
-                                          Subscribe
-                                      </button>
+                                      <p className="mt-4 mb-5 text-grey-300">{price.description}</p>
+                                      <button className="btn btn-outline btn-info btn-wide">Subscribe</button>
                                   </div>
                               </div>
                           </div>
