@@ -38,9 +38,9 @@ const PricingSection = () => {
 
   return (
     <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem'}}>
-      <section className="bg-base-100" style={{height:'75vh'}}>
+      <section className="bg-base-100" style={{height:'auto', minHeight:'75vh'}}>
           <div className="max-w-6xl py-8" style={{height:'100%'}}>
-            <div className="sm:flex sm:flex-col sm:align-center flex justify-center" style={{gap:'3rem'}}>
+            <div className="sm:flex sm:flex-col flex-col sm:align-center flex justify-center" style={{gap:'3rem'}}>
               <h1 className="text-4xl font-extrabold text-info sm:text-center sm:text-6xl">
                 Pricing Plans
               </h1>

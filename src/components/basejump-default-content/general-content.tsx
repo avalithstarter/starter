@@ -15,15 +15,15 @@ const GeneralContent = () => {
 
   return (
     <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem'}}>
-        <section className="flex flex-col justify-center" style={{height:'95vh', width:'100%', gap:'4rem'}}>
-            <h1 className="font-black text-2xl md:text-6xl text-info text-center">
+        <section className="flex flex-col justify-center" style={{height:'auto', width:'auto', gap:'4rem', minHeight:'95vh'}}>
+            <h1 className="text-4xl font-extrabold text-info sm:text-center sm:text-6xl">
                 What can we do for you?
             </h1>
             <p className="max-w-2xl mx-auto my-0 mt-5 text-xl text-grey-200 sm:text-center sm:text-2xl">
                 Embark on a journey of innovation with our personalized range of technology services, designed to empower and fulfill your unique needs.
             </p>
-            <div className="flex flex-row" style={{gap:'3rem'}}>
-                <div className="card bg-base-100 shadow-xl" style={{ width: '30%' }}>
+            <div className="flex flex-col lg:flex-row justify-between" style={{gap:'1rem'}}>
+                <div className="card bg-base-100 shadow-xl w-full lg:w-auto">
                     <figure className="px-10 pt-10">
                         <CodeIcon fontSize="large" />
                     </figure>
@@ -35,7 +35,7 @@ const GeneralContent = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card bg-base-100 shadow-xl" style={{ width: '30%' }}>
+                <div className="card bg-base-100 shadow-xl w-full lg:w-auto">
                     <figure className="px-10 pt-10">
                         <DeveloperModeIcon fontSize="large" />
                     </figure>
@@ -47,7 +47,7 @@ const GeneralContent = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card bg-base-100 shadow-xl" style={{ width: '30%' }}>
+                <div className="card bg-base-100 shadow-xl w-full lg:w-auto">
                     <figure className="px-10 pt-10">
                         <CloudSyncIcon fontSize="large" />
                     </figure>
