@@ -2,7 +2,11 @@ import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import useAuthCheck from "@/utils/use-auth-check";
 
+
+
+
 const PricingSection = () => {
+  
   const { t } = useTranslation("authentication");
   const router = useRouter();
   const { redirectedFrom } = router.query;
@@ -37,13 +41,14 @@ const PricingSection = () => {
   useAuthCheck(redirectedFrom as string);
 
   const handlePayment = (data) =>{
-    console.log('plan', data)
+    console.log('pagado', data)
+    router.push('/checkout')
   }
 
   return (
-    <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem'}}>
+    <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem', height:'100vh'}}>
       <section className="bg-base-100" style={{height:'auto', minHeight:'75vh'}}>
-          <div className="max-w-6xl py-8" style={{height:'100%'}}>
+          <div className="max-w-6xl py-8" style={{height:'100%', display:'flex'}}>
             <div className="sm:flex sm:flex-col flex-col sm:align-center flex justify-center" style={{gap:'3rem'}}>
               <h1 className="text-4xl font-extrabold text-primary sm:text-center sm:text-6xl">
                 Pricing Plans
@@ -83,6 +88,7 @@ const PricingSection = () => {
                                       </p>
                                       <p className="mt-4 mb-5 text-grey-300">{price.description}</p>
                                       <button className="btn btn-outline btn-primary btn-wide" onClick={()=>{handlePayment(price)}}>Subscribe</button>
+                                      
                                   </div>
                               </div>
                           </div>
