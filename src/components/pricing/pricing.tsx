@@ -1,22 +1,11 @@
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import useAuthCheck from "@/utils/use-auth-check";
-import { loadStripe } from "@stripe/stripe-js";
-import {
-  PaymentElement,
-  Elements,
-  useStripe,
-  useElements,
-} from '@stripe/react-stripe-js';
-import { useState } from "react";
+
 
 
 
 const PricingSection = () => {
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const [errorMessage, setErrorMessage] = useState(null);
   
   const { t } = useTranslation("authentication");
   const router = useRouter();
@@ -53,6 +42,7 @@ const PricingSection = () => {
 
   const handlePayment = (data) =>{
     console.log('pagado', data)
+    router.push('/checkout')
   }
 
   return (
@@ -98,7 +88,7 @@ const PricingSection = () => {
                                       </p>
                                       <p className="mt-4 mb-5 text-grey-300">{price.description}</p>
                                       <button className="btn btn-outline btn-primary btn-wide" onClick={()=>{handlePayment(price)}}>Subscribe</button>
-                                      {errorMessage && <div>{errorMessage}</div>}
+                                      
                                   </div>
                               </div>
                           </div>
