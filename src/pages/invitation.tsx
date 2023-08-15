@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import useInvitation from "@/utils/api/use-invitation";
 import useTranslation from "next-translate/useTranslation";
 import { Button } from "react-daisyui";
 import { useMutation } from "@tanstack/react-query";
@@ -13,8 +12,6 @@ const Invitation = () => {
   const { token } = router.query;
   const { t } = useTranslation("dashboard");
   const supabaseClient = useSupabaseClient<Database>();
-
-  const { data, isLoading } = useInvitation(token as string);
 
   const acceptInvitation = useMutation(
     async (invitationToken: string) => {
@@ -34,23 +31,7 @@ const Invitation = () => {
 
   return (
     <div className="max-w-md mx-auto my-12 bg-base-500 grid gap-y-4">
-      {isLoading ? (
-        <Loader className="mx-auto my-8 h-8" />
-      ) : !data?.active ? (
-        <h3 className="h4 text-center my-8">{t("invitation.invalid")}</h3>
-      ) : (
-        <>
-          <h3 className="h4 text-center mb-0">{t("invitation.title")}</h3>
-          <h1 className="h1 text-center mt-0 mb-8">{data?.team_name}</h1>
-          <Button
-            color="primary"
-            loading={acceptInvitation.isLoading}
-            onClick={() => acceptInvitation.mutate(token as string)}
-          >
-            {t("invitation.accept")}
-          </Button>
-        </>
-      )}
+     
     </div>
   );
 };
