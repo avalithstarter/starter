@@ -8,7 +8,6 @@ const DashboardIndex = () => {
   return (
     <>
       <DashboardMeta title={t("dashboardMeta.dashboard")} />
-        {/* This is where we add the content for the dashboard */}
         <div className="mx-auto my-auto px-10 flex flex-col justify-center" style={{height:'100vh', gap:'7rem'}}>
           <h1 className="text-4xl font-extrabold text-primary sm:text-center sm:text-6xl">
             Upload. Generate.<span className="text-error"> Deliver.</span>
