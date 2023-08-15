@@ -14,7 +14,7 @@ const GeneralContent = () => {
   useAuthCheck(redirectedFrom as string);
 
   return (
-    <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem'}}>
+    <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem', marginBottom:'30vh'}}>
         <section className="flex flex-col justify-center" style={{height:'auto', width:'auto', gap:'4rem', minHeight:'95vh'}}>
             <h1 className="text-4xl font-extrabold text-primary sm:text-center sm:text-6xl">
                 What can we do for you?
