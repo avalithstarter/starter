@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button, Drawer } from "react-daisyui";
 import SidebarMenu from "./sidebar/sidebar-menu";
-import useDashboardOverview from "@/utils/api/use-dashboard-overview";
+
 import { useRouter } from "next/router";
 import AccountSubscriptionTakeover from "@/components/dashboard/accounts/account-subscription-takeover/account-subscription-takeover";
 import useAccountBillingStatus from "@/utils/api/use-account-billing-status";
@@ -17,32 +17,12 @@ const DashboardLayout = ({ children }) => {
     setIsSidebarOpen(!isSidebarOpen);
   }
 
-  const { data, refetch: refetchDashboardOverview } = useDashboardOverview();
-
-  useEffect(() => {
-    /**
-     * Close sidebar when route changes
-     */
-    setIsSidebarOpen(false);
-    refetchDashboardOverview();
-  }, [router.asPath, refetchDashboardOverview]);
-  const currentAccount = useMemo(() => {
-    if (!accountId) {
-      return data?.find((a) => a.personal_account);
-    }
-    return data?.find((a) => a.account_id === accountId);
-  }, [data, accountId]);
-
-  const { data: subscriptionData } = useAccountBillingStatus(
-    currentAccount?.account_id
-  );
-
   return (
     <div className="min-h-screen">
       <Drawer
         side={
           <SidebarMenu
-            currentAccount={currentAccount}
+          
             onClose={toggleSidebar}
           />
         }
@@ -65,10 +45,7 @@ const DashboardLayout = ({ children }) => {
           {children}
         </main>
       </Drawer>
-      {subscriptionData?.billing_enabled &&
-        !["active", "trialing"].includes(subscriptionData?.status) && (
-          <AccountSubscriptionTakeover currentAccount={currentAccount} />
-        )}
+     
     </div>
   );
 };
