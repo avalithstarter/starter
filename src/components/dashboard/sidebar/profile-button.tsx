@@ -3,10 +3,8 @@ import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 
 import { Database } from "@/types/supabase-types";
 import Link from "next/link";
-import { useMemo } from "react";
 import { useRouter } from "next/router";
 import useTranslation from "next-translate/useTranslation";
-import useUserProfile from "@/utils/api/use-user-profile";
 
 type Props = {
   className?: string;

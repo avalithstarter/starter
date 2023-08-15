@@ -1,4 +1,3 @@
-import ListTeams from "@/components/dashboard/profile/list-teams";
 import useTeamAccounts from "@/utils/api/use-team-accounts";
 import NewAccountForm from "@/components/dashboard/accounts/new-account-form";
 import Loader from "@/components/core/loader";
@@ -11,9 +10,6 @@ const PersonalAccountDeactivated = () => {
   const { t } = useTranslation("dashboard");
   return (
     <div className="max-w-md mx-auto pt-10">
-      {isLoading ? (
-        <Loader className="h-8 mx-auto" />
-      ) : !data || data?.length === 0 ? (
         <div>
           <h2 className="h2">
             {t("personalAccountDeactivated.createFirstAccount")}
@@ -27,9 +23,6 @@ const PersonalAccountDeactivated = () => {
             }
           />
         </div>
-      ) : (
-        <ListTeams />
-      )}
     </div>
   );
 };
