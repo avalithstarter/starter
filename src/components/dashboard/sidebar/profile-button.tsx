@@ -12,16 +12,13 @@ type Props = {
   className?: string;
 };
 const DashboardProfileButton = ({ className }: Props) => {
-  const { data: profile } = useUserProfile();
   const user = useUser();
   const { t } = useTranslation("dashboard");
   const supabaseClient = useSupabaseClient<Database>();
   const router = useRouter();
 
-  const menuButtonText = useMemo(
-    () => profile?.name || t("profileButton.yourAccount"),
-    [profile, t]
-  );
+  const menuButtonText = user?.email
+
   return (
     <div className={className}>
       <Dropdown vertical="top" horizontal="center">

@@ -7,7 +7,7 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(`${process.env.PUBLISHABLE_KEY}`);
@@ -37,6 +37,10 @@ const CheckoutForm = () =>{
 }
 
 const CheckoutPage = () => {
+
+    useEffect(()=>{
+        document.title = 'Checkout'
+    },[])
     
     const { t } = useTranslation("authentication");
     const router = useRouter();

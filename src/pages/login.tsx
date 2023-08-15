@@ -3,11 +3,16 @@ import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useAuthCheck from "@/utils/use-auth-check";
+import { useEffect } from "react";
 
 const LoginPage = () => {
   const { t } = useTranslation("authentication");
   const router = useRouter();
   const { redirectedFrom } = router.query;
+
+  useEffect(()=>{
+    document.title = 'Login'
+  },[])
 
   useAuthCheck(redirectedFrom as string);
 
