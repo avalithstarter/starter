@@ -1,5 +1,6 @@
 import { MoonIcon, SunIcon } from "@heroicons/react/outline";
 import { Button, Dropdown } from "react-daisyui";
+
 import { useMemo } from "react";
 import useThemeStorage from "@/utils/use-theme-storage";
 
@@ -8,6 +9,11 @@ export const AVAILABLE_THEMES = {
     name: "Light",
     id: "light",
     Icon: SunIcon,
+  },
+  winter:{
+    name:"Winter",
+    id:"winter",
+    Icon:SunIcon,
   },
   dark: {
     name: "Dark",
