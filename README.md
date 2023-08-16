@@ -18,6 +18,10 @@ npm i
 npm run dev
 ```
 
+## Testing payments
+
+For testing stripe cases, use the SECRET_STRIPE_KEY in the .env and try some of [these values](https://stripe.com/docs/testing)
+
 ## Typescript and generated types
 
 We've implemented automatic type generation based off of your Supabase database config. You can learn more about this
