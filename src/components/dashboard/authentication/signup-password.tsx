@@ -53,26 +53,31 @@ const SignupPassword = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
-      <Input
-        label={t("shared.email")}
-        type="email"
-        {...register("email", { required: true })}
-      />
-      <Input
-        label={t("shared.password")}
-        type="password"
-        {...register("password", { required: true })}
-      />
-      <Button
-        type="submit"
-        color="primary"
-        disabled={isSubmitting}
-        loading={isSubmitting}
-      >
-        {buttonText || t("signupPassword.buttonText")}
-      </Button>
-    </form>
+    <div className="flex flex-col justify-around">
+      <p className="max-w-2xl mx-auto my-0 mt-5 text-xl text-grey-200 sm:text-center sm:text-2xl">
+        Start building with your 15 days trial! No credit card required
+      </p>
+      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+        <Input
+          label={t("shared.email")}
+          type="email"
+          {...register("email", { required: true })}
+        />
+        <Input
+          label={t("shared.password")}
+          type="password"
+          {...register("password", { required: true })}
+        />
+        <Button
+          type="submit"
+          color="primary"
+          disabled={isSubmitting}
+          loading={isSubmitting}
+        >
+          {buttonText || t("signupPassword.buttonText")}
+        </Button>
+      </form>
+    </div>
   );
 };
 

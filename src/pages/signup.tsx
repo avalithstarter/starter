@@ -17,7 +17,7 @@ const SignUpPage = () => {
   },[])
   
   return (
-    <div className="max-w-md mx-auto my-12 bg-base-500 grid gap-y-4">
+    <div className="max-w-md mx-auto my-12 bg-base-500 grid gap-y-4" style={{height:'45vh'}}>
       <SignupPassword />
       <Link href="/login" passHref>
         {t("shared.alreadyRegistered")}

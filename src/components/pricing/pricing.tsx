@@ -1,6 +1,7 @@
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import useAuthCheck from "@/utils/use-auth-check";
+import { useEffect, useState } from "react";
 
 
 
@@ -10,6 +11,7 @@ const PricingSection = () => {
   const { t } = useTranslation("authentication");
   const router = useRouter();
   const { redirectedFrom } = router.query;
+  const [minHeight, setMinHeight] = useState('50vh')
 
   const products = [
     {
@@ -63,6 +65,24 @@ const PricingSection = () => {
     router.push('/signup')
   }
 
+  const handleNavigation = () =>{
+    router.push('/signup') 
+  }
+
+  useEffect(()=>{
+    const getDimensions = (event) =>{
+      if(window.innerHeight < 883){
+        setMinHeight('70vh')
+      } else {
+        setMinHeight('50vh')
+      }
+    }
+
+    window.addEventListener('resize', getDimensions)
+
+    return ()=> window.removeEventListener('resize', getDimensions)
+  },[])
+
   return (
     <div className="max-w-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4" style={{maxWidth:'100rem', height:'100vh'}}>
       <section className="bg-base-100" style={{height:'auto', minHeight:'75vh', display:'flex', justifyContent:'flex-start'}}>
@@ -75,6 +95,11 @@ const PricingSection = () => {
                 Start building for free, then add a site plan to go live. Account
                 plans unlock additional features.
               </p>
+
+              <div className="tooltip" data-tip="No credit card required!">
+                <button onClick={handleNavigation} className="btn btn-primary btn-wide" style={{alignSelf:'center'}}>Get started for free</button>
+              </div>
+              
               <div className="flex flex-col sm:flex-row" style={{display:'flex', justifyContent:'flex-start', gap: '3rem'}}>
                 {products?.map((price) => {
                   const priceString =
@@ -86,7 +111,7 @@ const PricingSection = () => {
                     }).format(price.unit_amount);
 
                   return (
-                      <div key={price.id} className="relative flex self-center mt-12 border rounded-lg border-zinc-800" style={{minHeight:'50vh'}}>
+                      <div key={price.id} className="relative flex self-center mt-12 border rounded-lg border-zinc-800" style={{minHeight}}>
                           <div style={{width: '100%'}} className="border border-opacity-50 divide-y rounded-lg shadow-sm divide-zinc-600">
                               <div
                                   key={price.interval}
