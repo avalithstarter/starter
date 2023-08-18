@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import cx from "classnames";
 import { UseDashboardOverviewResponse } from "@/utils/api/use-dashboard-overview";
 import { useMemo } from "react";
-import { ACCOUNT_ROLES } from "@/types/auth";
 
 type Props = {
   currentAccount: UseDashboardOverviewResponse[0];
@@ -25,14 +24,12 @@ const PersonalAccountMenu = ({ currentAccount }: Props) => {
         href: "/dashboard/profile",
         isActive: router.asPath === "/dashboard/profile",
       },
-    ];
-    if (currentAccount?.account_role === ACCOUNT_ROLES.owner) {
-      internal.push({
+      {
         label: t("personalAccountMenu.billing"),
         href: "/dashboard/billing",
         isActive: router.asPath === "/dashboard/billing",
-      });
-    }
+      }
+    ];
     return internal;
   }, [router.asPath, currentAccount, t]);
   return (

@@ -2,14 +2,16 @@ import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import useAuthCheck from "@/utils/use-auth-check";
 import { useEffect, useState } from "react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 
 
 
-const PricingSection = () => {
+const PricingSection = ({checkout}:any) => {
   
   const { t } = useTranslation("authentication");
   const router = useRouter();
+  const user = useUser()
   const { redirectedFrom } = router.query;
   const [minHeight, setMinHeight] = useState('50vh')
 
@@ -60,9 +62,19 @@ const PricingSection = () => {
 
   useAuthCheck(redirectedFrom as string);
 
-  const handlePayment = (data) =>{
-    console.log('pagado', data)
-    router.push('/signup')
+  const handlePayment = (price) =>{
+    // esto es momentaneo, ya se que es re feo
+    if(user){
+      if(price === 12){
+        router.push('/checkout?type=hobby')
+      } else if(price === 24){
+        router.push('/checkout?type=freelance')
+      } else if(price === 32){
+        router.push('/checkout?type=startup')
+      }
+    } else {
+      handleNavigation()
+    }
   }
 
   const handleNavigation = () =>{
@@ -70,7 +82,7 @@ const PricingSection = () => {
   }
 
   useEffect(()=>{
-    const getDimensions = (event) =>{
+    const getDimensions = () =>{
       if(window.innerHeight < 883){
         setMinHeight('70vh')
       } else {
@@ -96,9 +108,14 @@ const PricingSection = () => {
                 plans unlock additional features.
               </p>
 
-              <div className="tooltip" data-tip="No credit card required!">
-                <button onClick={handleNavigation} className="btn btn-primary btn-wide" style={{alignSelf:'center'}}>Get started for free</button>
-              </div>
+              {
+                !user ? (
+                  <div className="tooltip" data-tip="No credit card required!">
+                    <button onClick={handleNavigation} className="btn btn-primary btn-wide" style={{alignSelf:'center'}}>Get started for free</button>
+                  </div>
+                ) : (<></>) 
+              }
+              
               
               <div className="flex flex-col sm:flex-row" style={{display:'flex', justifyContent:'flex-start', gap: '3rem'}}>
                 {products?.map((price) => {
@@ -138,8 +155,8 @@ const PricingSection = () => {
                                           })
                                         }
                                       </ul>
-                                      <button className="btn btn-outline btn-primary btn-wide" style={{margin:'0 auto'}} onClick={()=>{handlePayment(price)}}>Subscribe</button>
                                       
+                                      <button className="btn btn-outline btn-primary btn-wide" style={{margin:'0 auto'}} onClick={()=>{handlePayment(price.unit_amount)}}>Subscribe</button>
                                   </div>
                               </div>
                           </div>

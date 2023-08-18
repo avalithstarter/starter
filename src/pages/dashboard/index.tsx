@@ -1,18 +1,59 @@
 import useTranslation from "next-translate/useTranslation";
 import DashboardMeta from "@/components/dashboard/dashboard-meta";
+import { useEffect, useState } from "react";
+import { supabaseAdmin } from "@/utils/admin/supabase-admin-client";
+import { useUser } from "@supabase/auth-helpers-react";
 
-const Profiles = () =>{
+const DashboardContent = ({email}:any) =>{
+
+  const [expired, setExpired] = useState(false);
+
+  const checkExpired = (createdAt) =>{
+
+    const newTimestamp = Date.now();
+    const oldDateNumber = new Date(createdAt).getTime() - (3 * 60 * 60 * 1000);
+
+    const timeDifference = newTimestamp - oldDateNumber;
+    
+    if (timeDifference >= 60000) {
+      console.log('The new timestamp is 1 minutes or more older than the old timestamp.');
+      setExpired(true)
+    } else {
+      console.log('The new timestamp is less than 1 minutes older than the old timestamp.');
+      setExpired(false)
+    }
+  }
+
+  useEffect(() => {
+    async function fetchSubscription() {
+      const { data, error } = await supabaseAdmin
+        .from('subscriptions')
+        .select('*')
+        .eq('email', email)
+        .single();
+
+      if (error) {
+        console.error('Error fetching subscription:', error);
+      } else {
+        console.log(data)
+        if(data.type === 'trial'){
+          checkExpired(data.created_at)
+        }
+      }
+    }
+
+    fetchSubscription();
+  }, []);
+
   return(
-    <div className="mx-auto my-auto px-10 flex flex-col justify-center" style={{height:'100vh', gap:'7rem'}}>
-      <h1 className="text-4xl font-extrabold text-primary sm:text-center sm:text-6xl">
-        Upload. Generate.<span className="text-error"> Deliver.</span>
-      </h1>
-      <div className="flex flex-col justify-evenly" style={{height:'60%', width:'80%', border:'3px dashed #003D82', margin:'0 auto'}}>
-        <p className="max-w-2xl mx-auto my-0 mt-5 text-2xl text-black sm:text-center sm:text-3xl">
-          Drop your pdf file or select from your computer
-        </p>
-        <button className="btn btn-primary btn-wide" style={{margin:'0 auto'}}>Upload File</button>
-      </div>
+    <div>
+      {
+        expired ? (<h1 className="text-4xl font-extrabold text-error sm:text-center sm:text-6xl">
+          Expired subscription. Go to settings to update your plan.
+        </h1>) : (<h1 className="text-4xl font-extrabold text-primary sm:text-center sm:text-6xl">
+          This is your dashboard.
+        </h1>)
+      }
     </div>
   )
 }
@@ -21,9 +62,14 @@ const DashboardIndex = () => {
  
   const { t } = useTranslation("dashboard");
 
+  const user = useUser()
+
   return (
     <>
       <DashboardMeta title={t("dashboardMeta.dashboard")} />
+      {
+        user ? <DashboardContent email={user?.email}/> : <h1>Loading...</h1>
+      }
     </>
   );
 };

@@ -7,7 +7,7 @@ import { DASHBOARD_PATH } from "@/types/auth";
 import { useRouter } from "next/router";
 import getFullRedirectUrl from "@/utils/get-full-redirect-url";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
-
+import { supabaseAdmin } from "@/utils/admin/supabase-admin-client";
 type LOGIN_FORM = {
   email: string;
   password: string;
@@ -20,6 +20,18 @@ type Props = {
     [key: string]: string | number | boolean;
   };
 };
+
+async function insertSubscription(email: string, type: string) {
+  const { data, error } = await supabaseAdmin.from('subscriptions').insert([
+    { email, type },
+  ]);
+
+  if (error) {
+    console.error('Error inserting subscription:', error);
+  } else {
+    console.log('Subscription inserted successfully:', data);
+  }
+}
 
 const SignupPassword = ({
   redirectTo = DASHBOARD_PATH,
@@ -46,6 +58,7 @@ const SignupPassword = ({
         emailRedirectTo: getFullRedirectUrl(redirectTo),
       },
     });
+    await insertSubscription(email, 'trial')
     if (error) toast.error(error.message);
     if (!error) {
       await router.push(redirectTo);

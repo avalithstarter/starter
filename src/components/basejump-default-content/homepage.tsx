@@ -35,7 +35,7 @@ const BasejumpHomepage = () => {
         </div>
         
         <GeneralContent />
-        <PricingSection />
+        <PricingSection newUser={true}/>
       </div>
     </div>
   )
