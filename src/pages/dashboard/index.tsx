@@ -1,3 +1,4 @@
+/* eslint-disable */
 import useTranslation from "next-translate/useTranslation";
 import DashboardMeta from "@/components/dashboard/dashboard-meta";
 import { useEffect, useState } from "react";

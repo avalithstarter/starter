@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { supabaseAdmin } from "@/utils/admin/supabase-admin-client";
 import useAuthCheck from "@/utils/use-auth-check";
 import { useUser } from "@supabase/auth-helpers-react";

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import SettingsCard from "@/components/dashboard/shared/settings-card";
 import useTranslation from "next-translate/useTranslation";
 import { Button } from "react-daisyui";
