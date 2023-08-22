@@ -19,7 +19,7 @@ const PricingPage = () => {
 
   return (
     <div className="max-h-md mx-4 md:mx-auto my-12 bg-base-500 grid gap-y-4">
-      <PricingSection />
+      <PricingSection checkout/>
     </div>
   );
 };

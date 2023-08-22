@@ -27,11 +27,15 @@ const BasejumpHomepage = () => {
             Dashboard template for future {' '}
             <span className="text-primary">E-commerce</span>
           </h2>
-          <button onClick={handleNavigation} className="btn btn-primary btn-wide" style={{position:'relative', top:70, left:410}}>Get started for free</button>
+          <div className="flex justify-center mt-10">
+            <div className="tooltip" data-tip="No credit card required!">
+              <button onClick={handleNavigation} className="btn btn-primary btn-wide">Get started for free</button>
+            </div>
+          </div>
         </div>
         
         <GeneralContent />
-        <PricingSection />
+        <PricingSection newUser={true}/>
       </div>
     </div>
   )

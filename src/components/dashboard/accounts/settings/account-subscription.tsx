@@ -1,75 +1,65 @@
+/* eslint-disable */
 import SettingsCard from "@/components/dashboard/shared/settings-card";
 import useTranslation from "next-translate/useTranslation";
-import useAccountBillingStatus from "@/utils/api/use-account-billing-status";
 import { Button } from "react-daisyui";
-import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { supabaseAdmin } from "@/utils/admin/supabase-admin-client";
 
-type Props = {
-  accountId: string;
-};
-
-const AccountSubscription = ({ accountId }: Props) => {
+const AccountSubscription = ({user}:any) => {
   const { t } = useTranslation("dashboard");
+  const router = useRouter()
+  const [type, setType] = useState('')
 
-  const { data } = useAccountBillingStatus(accountId);
+  const handlePayment = () =>{
+    router.push('/pricing')
+  }
 
-  const getSubscriptionUrl = useMutation(
-    async () => {
-      const res = await fetch("/api/billing/portal-link", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ accountId }),
-      });
-      const { url } = await res.json();
-      return url;
-    },
-    {
-      onSuccess(url) {
-        if (typeof window === "object") {
-          window.location.href = url;
-        }
-      },
+  useEffect(()=>{
+    async function fetchSubscription() {
+      const { data, error } = await supabaseAdmin
+        .from('subscriptions')
+        .select('*')
+        .eq('email', user.email)
+        .single();
+
+      if (error) {
+        console.error('Error fetching subscription:', error);
+      } else {
+        console.log(data)
+        setType(data.type)
+      }
     }
-  );
+
+    fetchSubscription();
+  },[])
+
   return (
     <>
-      {data?.billing_enabled === false ? (
-        <div className="flex flex-col items-center justify-center gap-y-4 max-w-screen-md mx-auto">
-          <h2 className="text-2xl font-bold text-center">
-            {t("accountSubscription.billingDisabled")}
+      <SettingsCard
+        title={t("accountSubscription.title")}
+        description={t("accountSubscription.description")}
+      >
+        <SettingsCard.Body>
+          <h2 className="h4">
+            {type.toUpperCase()} - {'Active'}
           </h2>
-          <p className="text-center">
-            {t("accountSubscription.billingDisabledDescription")}
+          <p>
+            {t("accountSubscription.billingEmail", {
+              email: user?.email,
+            })}
           </p>
-        </div>
-      ) : (
-        <SettingsCard
-          title={t("accountSubscription.title")}
-          description={t("accountSubscription.description")}
-        >
-          <SettingsCard.Body>
-            <h2 className="h4">
-              {data?.plan_name} - {data?.status}
-            </h2>
-            <p>
-              {t("accountSubscription.billingEmail", {
-                email: data?.billing_email,
-              })}
-            </p>
-          </SettingsCard.Body>
-          <SettingsCard.Footer>
-            <Button
-              color="primary"
-              loading={getSubscriptionUrl.isLoading}
-              onClick={() => getSubscriptionUrl.mutate()}
-            >
-              {t("accountSubscription.updatePlan")}
-            </Button>
-          </SettingsCard.Footer>
-        </SettingsCard>
-      )}
+        </SettingsCard.Body>
+        <SettingsCard.Footer>
+          <Button
+            color="primary"
+      
+            onClick={handlePayment}
+          >
+            {t("accountSubscription.updatePlan")}
+          </Button>
+        </SettingsCard.Footer>
+      </SettingsCard>
     </>
   );
 };
