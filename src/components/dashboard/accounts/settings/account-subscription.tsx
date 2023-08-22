@@ -42,7 +42,7 @@ const AccountSubscription = ({user}:any) => {
       >
         <SettingsCard.Body>
           <h2 className="h4">
-            {type.toUpperCase()} - {'Active'}
+            {type.toUpperCase()}
           </h2>
           <p>
             {t("accountSubscription.billingEmail", {
