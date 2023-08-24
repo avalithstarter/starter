@@ -2,6 +2,8 @@
 
 This is a Nextjs/Supabase template for future projects. It was made from the [usebasejump.com](https://usebasejump.com) repository. 
 
+Here's the [diagram](https://app.eraser.io/workspace/WC6mGSiH7LmCes3NlmNd) for the user flow.
+
 ## Installation and usage
 
 Make sure to make the `.env` file with this variables
@@ -58,4 +60,4 @@ The project uses NextJS built in internationalization, and adds `next-translate`
 ## Notes
 
 - If there's an issue related with `window` in the build or development, just make sure to add a validation so there's no reference error. 
-
+- [Diagram](https://app.eraser.io/workspace/WC6mGSiH7LmCes3NlmNd)
