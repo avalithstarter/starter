@@ -2,7 +2,7 @@
 
 This is a Nextjs/Supabase template for future projects. It was made from the [usebasejump.com](https://usebasejump.com) repository. 
 
-Here's the [diagram](https://app.eraser.io/workspace/WC6mGSiH7LmCes3NlmNd) for the user flow.
+Here's the [diagram](https://app.eraser.io/workspace/WC6mGSiH7LmCes3NlmNd?origin=share) for the user flow.
 
 ## Installation and usage
 
